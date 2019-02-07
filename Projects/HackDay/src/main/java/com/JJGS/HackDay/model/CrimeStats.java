@@ -27,6 +27,12 @@ public class CrimeStats {
 
         }
 
+        public ArrayList<Crime> getCrimes(){
+            return this.crimeStats;
+        }
+
+
+
         public void filterByMonth(){}
         public void filterByCrimeType(){}
     }
