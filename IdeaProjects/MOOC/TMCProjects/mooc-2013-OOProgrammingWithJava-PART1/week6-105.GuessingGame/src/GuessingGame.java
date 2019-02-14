@@ -12,12 +12,21 @@ public class GuessingGame {
     public void play(int lowerLimit, int upperLimit) {
         instructions(lowerLimit, upperLimit);
 
-        // write the guessing logic here
-
+        while (true) {
+            int average = average(lowerLimit, upperLimit);
+            if (isGreaterThan(average)) {
+                lowerLimit = average + 1;
+            } else {
+                upperLimit = average;
+            }
+            if (lowerLimit == upperLimit) {
+                System.out.println("The number you're thinking of is " + lowerLimit + ".");
+                break;
+            }
+        }
     }
 
     // implement here the methods isGreaterThan and average
-
     public void instructions(int lowerLimit, int upperLimit) {
         int maxQuestions = howManyTimesHalvable(upperLimit - lowerLimit);
 
@@ -35,5 +44,19 @@ public class GuessingGame {
 
         // Below we swap the base number to base two logarithms!
         return (int) (Math.log(number) / Math.log(2)) + 1;
+    }
+
+    public boolean isGreaterThan(int value) {
+        System.out.println("Is your number greater than " + value + "? (y/n)");
+        String ans = reader.nextLine();
+        if (ans.equals("y")) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public int average(int firstNumber, int secondNumber) {
+        return (firstNumber + secondNumber) / 2;
     }
 }
